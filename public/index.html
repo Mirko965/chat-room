@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Chat room</title>
+    <title>Chat room</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,10 +13,38 @@
 </head>
 
 <body>
-  <p>Welcome from chat room</p>
+<div class="container-fluid">
+    <h2>Welcome from chat room</h2>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/index.js"></script>
+    <form id="messageForm" name="messageForm">
+
+        <div class="input-group mb-3">
+            <input name="message" id="message" class="form-control form-control-sm" type="text" placeholder="message" onclick="this.value=''"/>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-secondary" >Send</button>
+            </div>
+
+        </div>
+    </form>
+
+    <button class="btn btn-outline-secondary" id="sendLocation">Send Location</button>
+
+    <div class="form-group" >
+        <label for="exampleFormControlSelect"></label>
+        <div class="form-control" id="exampleFormControlSelect" style="max-height: 5em">
+            <ul id="messages" style="list-style: none"></ul>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
 </body>
 
 </html>
