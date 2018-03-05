@@ -9,41 +9,63 @@
     <meta name="description" content="">
     <meta name="google-site-verification" content="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="" rel="stylesheet" type="text/css" media="screen">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 
 <body>
 <div class="container-fluid">
-    <h2>Welcome from chat room</h2>
+    <div class="row">
 
-    <form id="messageForm" name="messageForm">
-
-        <div class="input-group mb-3">
-            <input name="message" id="message" class="form-control form-control-sm" type="text" placeholder="message" onclick="this.value=''"/>
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-outline-secondary" >Send</button>
-            </div>
-
+        <div class="col-3">
+            <h3>People</h3>
         </div>
-    </form>
 
-    <button class="btn btn-outline-secondary" id="sendLocation">Send Location</button>
+        <div class="col-9">
 
-    <div class="form-group" >
-        <label for="exampleFormControlSelect"></label>
-        <div class="form-control" id="exampleFormControlSelect" style="max-height: 5em">
-            <ul id="messages" style="list-style: none"></ul>
+            <ul id="messages" class="list-group"></ul>
+
+            <div class="footer">
+                <form id="messageForm" name="messageForm">
+                    <div class="input-group mb-3">
+                        <input name="message" id="message" class="form-control form-control-sm" type="text" placeholder="message" autofocus autocomplete="off"/>
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-outline-secondary" >Send</button>
+                            <button id="sendLocation" class="btn btn-outline-secondary">Send Location</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-
-
-
-
 </div>
 
+<script id="message-template" type="text/template">
 
+    <li class="list-group-item list-group-item-success">
+        <b>{{from}}</b> <span>{{create}}</span>
+        <p>{{text}}</p>
+    </li>
+
+</script>
+
+<script id="newLocationMessage-template" type="text/template">
+
+    <li class="list-group-item list-group-item-success">
+        <b>{{from}}</b> <span>{{create}}</span>
+        <p><a href="{{url}}" target="_blank">My Location</a></p>
+    </li>
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
+<script src="/js/libs/moment.js"></script>
+<script src="/js/libs/mustache.js"></script>
+<script src="/js/libs/handlebars.js"></script>
 <script src="/js/index.js"></script>
 </body>
 
